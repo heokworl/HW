@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ef">
+  <title>작품 모음</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: #e9e7e4;
+      color: #252421;
+    }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; padding: 32px 16px; }
+    .phone {
+      width: min(100%, 420px);
+      min-height: min(820px, calc(100vh - 64px));
+      margin: 0 auto;
+      padding: 34px 22px 28px;
+      border: 1px solid rgba(40, 37, 32, .08);
+      border-radius: 30px;
+      background: #f8f7f5;
+      box-shadow: 0 18px 55px rgba(38, 34, 28, .11);
+    }
+    .eyebrow {
+      margin: 0 0 9px;
+      color: #8b8175;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+    h1 { margin: 0; font-size: 25px; letter-spacing: -.05em; }
+    .hint { margin: 8px 0 24px; color: #89857f; font-size: 13px; }
+    ol { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    a {
+      display: flex;
+      min-height: 51px;
+      align-items: center;
+      gap: 14px;
+      padding: 0 15px;
+      border: 1px solid #eeece8;
+      border-radius: 15px;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color .16s ease, transform .16s ease, background .16s ease;
+    }
+    a:hover, a:focus-visible { border-color: #c9b9a5; background: #fdfbf8; transform: translateY(-1px); outline: none; }
+    .number { width: 22px; color: #a49b90; font-size: 11px; font-variant-numeric: tabular-nums; }
+    .title { flex: 1; font-size: 14px; font-weight: 600; letter-spacing: -.025em; }
+    .arrow { color: #b2aaa0; font-size: 18px; line-height: 1; }
+    @media (max-width: 480px) {
+      body { padding: 0; background: #f8f7f5; }
+      .phone { width: 100%; min-height: 100vh; padding: 40px 20px 30px; border: 0; border-radius: 0; box-shadow: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="phone">
+    <header>
+      <p class="eyebrow">MY COLLECTION</p>
+      <h1>작품 모음</h1>
+      <p class="hint">보고 싶은 페이지를 선택해 주세요.</p>
+    </header>
+    <nav aria-label="작품 페이지 목록">
+      <ol>
+        <li><a href="괴이도감.html"><span class="number">01</span><span class="title">괴이도감</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="흑월시황청.html"><span class="number">02</span><span class="title">흑월시황청</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="강태산.html"><span class="number">03</span><span class="title">강태산</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="엑시엄.html"><span class="number">04</span><span class="title">엑시엄</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="키스.html"><span class="number">05</span><span class="title">키스</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="센티넬가이드.html"><span class="number">06</span><span class="title">센티넬가이드</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="대리모%20구합니다.html"><span class="number">07</span><span class="title">대리모 구합니다</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="단테%20살바토레.html"><span class="number">08</span><span class="title">단테 살바토레</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="무온.html"><span class="number">09</span><span class="title">무온</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="천우혁.html"><span class="number">10</span><span class="title">천우혁</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="권태식.html"><span class="number">11</span><span class="title">권태식</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="알렉스%20쇼어.html"><span class="number">12</span><span class="title">알렉스 쇼어</span><span class="arrow" aria-hidden="true">›</span></a></li>
+        <li><a href="차강혁.html"><span class="number">13</span><span class="title">차강혁</span><span class="arrow" aria-hidden="true">›</span></a></li>
+      </ol>
+    </nav>
+  </main>
+</body>
+</html>
