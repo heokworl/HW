@@ -3,85 +3,271 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f2ef">
-  <title>작품 모음</title>
+  <meta name="theme-color" content="#fff6f2">
+  <title>먀옹의 작품 서랍</title>
   <style>
     :root {
-      color-scheme: light;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      background: #e9e7e4;
-      color: #252421;
+      --ink: #493b3b;
+      --pale: #fff6f2;
+      font-family: "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: #f7e9e4;
     }
     * { box-sizing: border-box; }
-    body { min-height: 100vh; margin: 0; padding: 32px 16px; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 28px 14px;
+      background-color: #f7e9e4;
+      background-image: radial-gradient(#d9b8ad 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
     .phone {
-      width: min(100%, 420px);
-      min-height: min(820px, calc(100vh - 64px));
+      position: relative;
+      width: min(100%, 440px);
+      min-height: calc(100vh - 56px);
       margin: 0 auto;
-      padding: 34px 22px 28px;
-      border: 1px solid rgba(40, 37, 32, .08);
-      border-radius: 30px;
-      background: #f8f7f5;
-      box-shadow: 0 18px 55px rgba(38, 34, 28, .11);
+      padding: 25px 20px 18px;
+      overflow: hidden;
+      border: 2px solid #fff;
+      border-radius: 32px;
+      background: var(--pale);
+      box-shadow: 0 14px 38px #8b625229, inset 0 0 0 1px #f5dfd8;
     }
-    .eyebrow {
-      margin: 0 0 9px;
-      color: #8b8175;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .16em;
+    .phone::before, .phone::after {
+      position: absolute;
+      z-index: 0;
+      color: #efc9c0;
+      content: "🐾";
+      font-size: 32px;
+      opacity: .55;
+      pointer-events: none;
     }
-    h1 { margin: 0; font-size: 25px; letter-spacing: -.05em; }
-    .hint { margin: 8px 0 24px; color: #89857f; font-size: 13px; }
-    ol { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
-    a {
-      display: flex;
-      min-height: 51px;
+    .phone::before { top: 121px; right: 14px; transform: rotate(24deg); }
+    .phone::after { top: 360px; left: 6px; transform: rotate(-22deg); }
+    .topline, .hero, .section-title, .grid, .footer { position: relative; z-index: 1; }
+    .topline { display: flex; align-items: center; justify-content: space-between; }
+    .brand {
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
-      padding: 0 15px;
-      border: 1px solid #eeece8;
-      border-radius: 15px;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 1px solid #f0d6ce;
+      border-radius: 999px;
       background: #fff;
-      color: inherit;
+      color: #a87975;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+    .brand svg { width: 15px; height: 15px; fill: #df9292; }
+    .hello { color: #b7a19b; font-size: 10px; }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 19px 0 16px;
+      padding: 18px 17px;
+      overflow: hidden;
+      border: 1px solid #f1d6cf;
+      border-radius: 23px;
+      background: linear-gradient(120deg, #ffe6e2, #fff0e8 62%, #fff9f2);
+    }
+    .hero-copy { position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 6px; color: #c88382; font-size: 9px; font-weight: 800; letter-spacing: .14em; }
+    h1 { margin: 0; color: #594343; font-size: 25px; font-weight: 900; letter-spacing: -.08em; }
+    .subtitle { margin: 7px 0 0; color: #a48b86; font-size: 10px; }
+    .cat-face {
+      position: relative;
+      display: grid;
+      width: 69px;
+      height: 61px;
+      flex: none;
+      place-items: center;
+      margin-right: 2px;
+      border: 2px solid #d99191;
+      border-radius: 47% 47% 43% 43%;
+      background: #fffaf5;
+      color: #d99191;
+      font-size: 28px;
+      transform: rotate(5deg);
+    }
+    .cat-face::before, .cat-face::after {
+      position: absolute;
+      top: -8px;
+      z-index: -1;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d99191;
+      background: #fff5ef;
+      content: "";
+      transform: rotate(45deg);
+    }
+    .cat-face::before { left: 4px; border-radius: 4px 12px 3px 8px; }
+    .cat-face::after { right: 4px; border-radius: 12px 4px 8px 3px; }
+    .cat-face span { margin-top: 5px; }
+    .count {
+      position: absolute;
+      right: 75px;
+      bottom: 12px;
+      color: #d48a88;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .section-title { display: flex; align-items: center; justify-content: space-between; margin: 0 2px 10px; }
+    .section-title h2 { margin: 0; font-size: 12px; font-weight: 900; letter-spacing: -.03em; }
+    .section-title span { color: #bd9b93; font-size: 9px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; }
+    .work {
+      min-width: 0;
+      padding: 6px;
+      border: 1px solid #f0ded8;
+      border-radius: 17px;
+      background: #fffdfa;
+      box-shadow: 0 3px 9px #936a5e0d;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .work:hover { transform: translateY(-2px); box-shadow: 0 7px 14px #936a5e1c; }
+    .preview {
+      position: relative;
+      display: block;
+      height: 128px;
+      overflow: hidden;
+      border: 1px solid #f1ded8;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #fff0ec, #f7e2dc 55%, #f9efe5);
+    }
+    .preview::after {
+      position: absolute;
+      right: 8px;
+      bottom: 5px;
+      color: #d78f8f;
+      content: "🐾";
+      font-size: 16px;
+      filter: drop-shadow(0 1px 2px #fff);
+      pointer-events: none;
+    }
+    .preview iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+    .preview-label {
+      position: absolute;
+      z-index: 1;
+      top: 6px;
+      left: 6px;
+      padding: 4px 6px;
+      border: 1px solid #fff;
+      border-radius: 999px;
+      background: #fffaf0e8;
+      color: #a77b74;
+      font-size: 7px;
+      font-weight: 800;
+      letter-spacing: .07em;
+    }
+    .work-info { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 7px 3px 2px; }
+    .number { flex: none; color: #d38e89; font-family: Georgia, serif; font-size: 9px; font-style: italic; }
+    .title {
+      overflow: hidden;
+      color: #594343;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: -.04em;
       text-decoration: none;
-      transition: border-color .16s ease, transform .16s ease, background .16s ease;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    a:hover, a:focus-visible { border-color: #c9b9a5; background: #fdfbf8; transform: translateY(-1px); outline: none; }
-    .number { width: 22px; color: #a49b90; font-size: 11px; font-variant-numeric: tabular-nums; }
-    .title { flex: 1; font-size: 14px; font-weight: 600; letter-spacing: -.025em; }
-    .arrow { color: #b2aaa0; font-size: 18px; line-height: 1; }
+    .open { flex: none; color: #c58a82; font-size: 12px; text-decoration: none; }
+    .title:hover, .open:hover { color: #df777c; }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #e8cfc7;
+      color: #b69c95;
+      font-size: 9px;
+    }
+    .footer svg { width: 13px; height: 13px; fill: #e4a1a0; }
     @media (max-width: 480px) {
-      body { padding: 0; background: #f8f7f5; }
-      .phone { width: 100%; min-height: 100vh; padding: 40px 20px 30px; border: 0; border-radius: 0; box-shadow: none; }
+      body { padding: 0; background: var(--pale); }
+      .phone {
+        width: 100%;
+        min-height: 100vh;
+        padding: 23px 17px 18px;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .preview { height: clamp(112px, 34vw, 145px); }
     }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+    @media (max-width: 350px) {
+      .phone { padding-right: 12px; padding-left: 12px; }
+      .preview { height: 105px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .work { transition: none; } }
   </style>
 </head>
 <body>
   <main class="phone">
-    <header>
-      <p class="eyebrow">MY COLLECTION</p>
-      <h1>작품 모음</h1>
-      <p class="hint">보고 싶은 페이지를 선택해 주세요.</p>
+    <div class="topline">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <ellipse cx="24" cy="31" rx="11" ry="9"/>
+          <ellipse cx="11" cy="18" rx="4" ry="6" transform="rotate(-25 11 18)"/>
+          <ellipse cx="21" cy="13" rx="4" ry="6"/>
+          <ellipse cx="31" cy="14" rx="4" ry="6" transform="rotate(12 31 14)"/>
+          <ellipse cx="39" cy="20" rx="4" ry="6" transform="rotate(28 39 20)"/>
+        </svg>
+        CAT'S LITTLE INDEX
+      </div>
+      <span class="hello">야옹, 골라봐! ♡</span>
+    </div>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">먀옹의 작은 세계들</p>
+        <h1>작품 서랍장</h1>
+        <p class="subtitle">마음에 드는 서랍을 톡 눌러 열어봐!</p>
+      </div>
+      <div class="cat-face" aria-hidden="true"><span>｡•ﻌ•｡</span></div>
+      <span class="count">13개의 이야기</span>
     </header>
-    <nav aria-label="작품 페이지 목록">
-      <ol>
-        <li><a href="https://myaong-mood.github.io/Anomalies-book/"><span class="number">01</span><span class="title">괴이도감</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="흑월시황청.html"><span class="number">02</span><span class="title">흑월시황청</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="강태산.html"><span class="number">03</span><span class="title">강태산</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="엑시엄.html"><span class="number">04</span><span class="title">엑시엄</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="키스.html"><span class="number">05</span><span class="title">키스</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="센티넬가이드.html"><span class="number">06</span><span class="title">SA 스페셜 에이전트 SD 팀</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="대리모%20구합니다.html"><span class="number">07</span><span class="title">대리모 구합니다</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="단테%20살바토레.html"><span class="number">08</span><span class="title">단테 살바토레</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="무온.html"><span class="number">09</span><span class="title">무온</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="천우혁.html"><span class="number">10</span><span class="title">천우혁</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="권태식.html"><span class="number">11</span><span class="title">권태식</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="알렉스%20쇼어.html"><span class="number">12</span><span class="title">알렉스 쇼어</span><span class="arrow" aria-hidden="true">›</span></a></li>
-        <li><a href="차강혁.html"><span class="number">13</span><span class="title">차강혁</span><span class="arrow" aria-hidden="true">›</span></a></li>
-      </ol>
-    </nav>
+
+    <div class="section-title">
+      <h2>어느 이야기부터 볼까?</h2>
+      <span>발자국 따라 총총 ♡</span>
+    </div>
+
+    <section class="grid" aria-label="작품별 미리보기">
+      <article class="work"><a class="preview" href="괴이도감.html" aria-label="괴이도감 열기"><span class="preview-label">01 · 살짝 엿보기</span><iframe src="괴이도감.html" loading="lazy" title="괴이도감 미리보기"></iframe></a><div class="work-info"><span class="number">01</span><a class="title" href="괴이도감.html">괴이도감</a><a class="open" href="괴이도감.html" aria-label="괴이도감 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="흑월시황청.html" aria-label="흑월시황청 열기"><span class="preview-label">02 · 살짝 엿보기</span><iframe src="흑월시황청.html" loading="lazy" title="흑월시황청 미리보기"></iframe></a><div class="work-info"><span class="number">02</span><a class="title" href="흑월시황청.html">흑월시황청</a><a class="open" href="흑월시황청.html" aria-label="흑월시황청 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="강태산.html" aria-label="강태산 열기"><span class="preview-label">03 · 살짝 엿보기</span><iframe src="강태산.html" loading="lazy" title="강태산 미리보기"></iframe></a><div class="work-info"><span class="number">03</span><a class="title" href="강태산.html">강태산</a><a class="open" href="강태산.html" aria-label="강태산 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="엑시엄.html" aria-label="엑시엄 열기"><span class="preview-label">04 · 살짝 엿보기</span><iframe src="엑시엄.html" loading="lazy" title="엑시엄 미리보기"></iframe></a><div class="work-info"><span class="number">04</span><a class="title" href="엑시엄.html">엑시엄</a><a class="open" href="엑시엄.html" aria-label="엑시엄 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="키스.html" aria-label="키스 열기"><span class="preview-label">05 · 살짝 엿보기</span><iframe src="키스.html" loading="lazy" title="키스 미리보기"></iframe></a><div class="work-info"><span class="number">05</span><a class="title" href="키스.html">키스</a><a class="open" href="키스.html" aria-label="키스 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="센티넬가이드.html" aria-label="센티넬가이드 열기"><span class="preview-label">06 · 살짝 엿보기</span><iframe src="센티넬가이드.html" loading="lazy" title="센티넬가이드 미리보기"></iframe></a><div class="work-info"><span class="number">06</span><a class="title" href="센티넬가이드.html">센티넬가이드</a><a class="open" href="센티넬가이드.html" aria-label="센티넬가이드 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="대리모%20구합니다.html" aria-label="대리모 구합니다 열기"><span class="preview-label">07 · 살짝 엿보기</span><iframe src="대리모%20구합니다.html" loading="lazy" title="대리모 구합니다 미리보기"></iframe></a><div class="work-info"><span class="number">07</span><a class="title" href="대리모%20구합니다.html">대리모 구합니다</a><a class="open" href="대리모%20구합니다.html" aria-label="대리모 구합니다 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="단테%20살바토레.html" aria-label="단테 살바토레 열기"><span class="preview-label">08 · 살짝 엿보기</span><iframe src="단테%20살바토레.html" loading="lazy" title="단테 살바토레 미리보기"></iframe></a><div class="work-info"><span class="number">08</span><a class="title" href="단테%20살바토레.html">단테 살바토레</a><a class="open" href="단테%20살바토레.html" aria-label="단테 살바토레 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="무온.html" aria-label="무온 열기"><span class="preview-label">09 · 살짝 엿보기</span><iframe src="무온.html" loading="lazy" title="무온 미리보기"></iframe></a><div class="work-info"><span class="number">09</span><a class="title" href="무온.html">무온</a><a class="open" href="무온.html" aria-label="무온 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="천우혁.html" aria-label="천우혁 열기"><span class="preview-label">10 · 살짝 엿보기</span><iframe src="천우혁.html" loading="lazy" title="천우혁 미리보기"></iframe></a><div class="work-info"><span class="number">10</span><a class="title" href="천우혁.html">천우혁</a><a class="open" href="천우혁.html" aria-label="천우혁 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="권태식.html" aria-label="권태식 열기"><span class="preview-label">11 · 살짝 엿보기</span><iframe src="권태식.html" loading="lazy" title="권태식 미리보기"></iframe></a><div class="work-info"><span class="number">11</span><a class="title" href="권태식.html">권태식</a><a class="open" href="권태식.html" aria-label="권태식 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="알렉스%20쇼어.html" aria-label="알렉스 쇼어 열기"><span class="preview-label">12 · 살짝 엿보기</span><iframe src="알렉스%20쇼어.html" loading="lazy" title="알렉스 쇼어 미리보기"></iframe></a><div class="work-info"><span class="number">12</span><a class="title" href="알렉스%20쇼어.html">알렉스 쇼어</a><a class="open" href="알렉스%20쇼어.html" aria-label="알렉스 쇼어 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="차강혁.html" aria-label="차강혁 열기"><span class="preview-label">13 · 살짝 엿보기</span><iframe src="차강혁.html" loading="lazy" title="차강혁 미리보기"></iframe></a><div class="work-info"><span class="number">13</span><a class="title" href="차강혁.html">차강혁</a><a class="open" href="차강혁.html" aria-label="차강혁 열기">↗</a></div></article>
+      <article class="work"><a class="preview" href="더베일.html" aria-label="더베일 열기"><span class="preview-label">14 · 살짝 엿보기</span><iframe src="더베일.html" loading="lazy" title="더베일 미리보기"></iframe></a><div class="work-info"><span class="number">14</span><a class="title" href="더베일.html">더베일</a><a class="open" href="더베일.html" aria-label="더베일 열기">↗</a></div></article>
+    </section>
+
+    <footer class="footer">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="31" rx="11" ry="9"/><ellipse cx="11" cy="18" rx="4" ry="6" transform="rotate(-25 11 18)"/><ellipse cx="21" cy="13" rx="4" ry="6"/><ellipse cx="31" cy="14" rx="4" ry="6" transform="rotate(12 31 14)"/><ellipse cx="39" cy="20" rx="4" ry="6" transform="rotate(28 39 20)"/></svg>
+      <span>고양이 발자국을 따라왔어요</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="31" rx="11" ry="9"/><ellipse cx="11" cy="18" rx="4" ry="6" transform="rotate(-25 11 18)"/><ellipse cx="21" cy="13" rx="4" ry="6"/><ellipse cx="31" cy="14" rx="4" ry="6" transform="rotate(12 31 14)"/><ellipse cx="39" cy="20" rx="4" ry="6" transform="rotate(28 39 20)"/></svg>
+    </footer>
   </main>
 </body>
 </html>
