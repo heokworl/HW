@@ -215,7 +215,47 @@
     @media (prefers-reduced-motion: reduce) { .work { transition: none; } }
   </style>
 </head>
+  <script>
+  function centerPreview(frame) {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc || !doc.documentElement) return;
+
+      let style = doc.getElementById("index-preview-style");
+      if (!style) {
+        style = doc.createElement("style");
+        style.id = "index-preview-style";
+        style.textContent = `
+          html, body, * { scrollbar-width: none !important; }
+          html::-webkit-scrollbar, body::-webkit-scrollbar,
+          *::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+          }
+        `;
+        (doc.head || doc.documentElement).appendChild(style);
+      }
+
+      requestAnimationFrame(() => {
+        const root = doc.documentElement;
+        const view = frame.contentWindow;
+        const maxX = Math.max(0, root.scrollWidth - view.innerWidth);
+        const maxY = Math.max(0, root.scrollHeight - view.innerHeight);
+        view.scrollTo(maxX / 2, maxY / 2);
+      });
+    } catch (error) {
+      // 외부 출처 페이지는 브라우저 보안 정책상 조정이 제한됩니다.
+    }
+  }
+
+  document.querySelectorAll(".preview iframe").forEach((frame) => {
+    frame.addEventListener("load", () => centerPreview(frame));
+    if (frame.contentDocument?.readyState === "complete") centerPreview(frame);
+  });
+</script>
 <body>
+  
   <main class="phone">
     <div class="topline">
       <div class="brand">
